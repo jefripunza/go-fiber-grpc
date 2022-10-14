@@ -1,0 +1,20 @@
+syntax = "proto3";
+package proto;
+option go_package = "go-fiber-grpc/proto";
+
+// ===================================
+
+message RequestProductDetail {
+    int32 id = 1;
+}
+
+message ResponseProductDetail {
+    int32 id = 1;
+    string name = 2;
+    int32 price = 3;
+    string description = 4;
+}
+
+service ProductsService {
+    rpc Detail(RequestProductDetail) returns (ResponseProductDetail);
+}

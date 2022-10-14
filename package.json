@@ -1,0 +1,16 @@
+{
+  "description": "ini hanya untuk nyimpen scripts biar mudah dijalankan",
+  "author": "Jefri Herdi Triyanto <jefri.triyanto@goapotik.com>",
+  "scripts": {
+    "install": "echo \"this is't NodeJS Project\" && rm -rf node_modules || true && rm yarn.lock || true",
+    "clean": "rm *.db || true && rm run",
+    "dev": "go run main.go",
+    "build": "go build -o ./run",
+    "start": "./run",
+    "swagger:update": "swag init",
+    "proto:update": "protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto/*.proto",
+    "docker:init": "docker build -t go-fiber-grpc . && docker run -dp 8083:8083 -p 4083:4083 go-fiber-grpc",
+    "docker:update": "docker ps | grep 'go-fiber-grpc' | awk '{ print $1 }' | xargs docker stop | xargs docker rm && yarn docker:build",
+    "test": ""
+  }
+}
